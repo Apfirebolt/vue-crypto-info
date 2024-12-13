@@ -6,6 +6,7 @@ export const useCoin = defineStore("coin", {
   state: () => ({
     coin: ref({}),
     coinList: ref([]),
+    priceMessage: ref(""),
     loading: ref(false),
   }),
 
@@ -15,6 +16,9 @@ export const useCoin = defineStore("coin", {
     },
     getCoinList() {
       return this.coinList;
+    },
+    getPriceMessage() {
+      return this.priceMessage;
     },
     isLoading() {
       return this.loading;
@@ -47,6 +51,36 @@ export const useCoin = defineStore("coin", {
       } catch (error) {
         console.log(error);
         this.loading = false;
+      }
+    },
+
+    async showPriceINR (coinId) {
+      try {
+        this.loading = true;
+        const { data } = await httpClient.get(
+          `simple/price?ids=${coinId}&vs_currencies=inr`
+        );
+        this.loading = false;
+        // set the price message
+        this.priceMessage = `1 ${coinId} = ₹${data[coinId].inr}`;
+      } catch (error) {
+        this.loading = false;
+        console.error(error);
+      }
+    },
+
+    async showPriceUSD (coinId) {
+      try {
+        this.loading = true;
+        const { data } = await httpClient.get(
+          `simple/price?ids=${coinId}&vs_currencies=usd`
+        );
+        this.loading = false;
+        // set the price message
+        this.priceMessage = `1 ${coinId} = $${data[coinId].usd}`;
+      } catch (error) {
+        this.loading = false;
+        console.error(error);
       }
     },
 
