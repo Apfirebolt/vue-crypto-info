@@ -15,6 +15,9 @@
     <Loader v-if="isLoading" />
 
     <div class="mx-auto w-3/4 my-3">
+      <h2 class="text-center bg-blue-700 text-white text-xl px-2 py-3">
+        Coins
+      </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-2 py-4">
         <div
           v-for="coin in coinData.coins"
@@ -32,6 +35,46 @@
             </div>
             <p class="text-gray-700 text-base">
               Market Cap Rank: {{ coin.market_cap_rank }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <h2 class="text-center bg-blue-700 text-white text-xl px-2 py-3">
+        Exchanges
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-2 py-4">
+        <div
+          v-for="exchange in coinData.exchanges"
+          :key="exchange.id"
+          class="max-w-sm rounded overflow-hidden text-center shadow-lg my-4"
+        >
+          <img
+            class="w-64 h-64 mx-auto my-3"
+            :src="exchange.large"
+            :alt="exchange.name"
+          />
+          <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2">
+              {{ exchange.name }}
+            </div>
+            <p class="text-gray-700 text-base">
+              Market Type: {{ exchange.market_type }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <h2 class="text-center bg-blue-700 text-white text-xl px-2 py-3">
+        Categories
+      </h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 px-2 py-4">
+        <div
+          v-for="item in coinData.categories"
+          :key="item.id"
+          class="max-w-sm rounded overflow-hidden text-center shadow-lg my-4"
+        >
+          <div class="px-6 py-4">
+            <p class="text-gray-700 text-base">
+              {{ item.name }}
             </p>
           </div>
         </div>

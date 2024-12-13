@@ -5,6 +5,24 @@
       <p class="mt-2 max-w-4xl text-sm text-gray-500">
         List of popular cryptocurrencies and their price in USD
       </p>
+      <div class="w-1/2 mx-auto my-3 bg-neutral-100 rounded-md px-3 py-2">
+        <div class="flex justify-between items-center mt-4">
+          <button
+            @click="previousPage"
+            :disabled="currentPage === 1"
+            class="bg-blue-500 text-white font-bold py-2 px-4 rounded disabled:opacity-50"
+          >
+            Previous
+          </button>
+          <span>Page {{ currentPage }}</span>
+          <button
+            @click="nextPage"
+            class="bg-blue-500 text-white font-bold py-2 px-4 rounded disabled:opacity-50"
+          >
+            Next
+          </button>
+        </div>
+      </div>
     </div>
     <Loader v-if="isLoading" />
 
@@ -42,13 +60,26 @@
 </template>
 
 <script setup>
-import { computed, onMounted } from "vue";
+import { computed, ref, onMounted } from "vue";
 import { useCoin } from "../store/coin";
 import Loader from "../components/Loader.vue";
-const coinStore = useCoin();
 
+const coinStore = useCoin();
+const currentPage = ref(1);
 const coins = computed(() => coinStore.coinList);
 const isLoading = computed(() => coinStore.isLoading);
+
+const nextPage = () => {
+  currentPage.value++;
+  coinStore.getCoinsAction(currentPage.value);
+};
+
+const previousPage = () => {
+  if (currentPage.value > 1) {
+    currentPage.value--;
+    coinStore.getCoinsAction(currentPage.value);
+  }
+};
 
 onMounted(async () => {
   // API call
