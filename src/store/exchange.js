@@ -21,10 +21,9 @@ export const useExchange = defineStore("exchange", {
     async getExchangesAction() {
       try {
         this.loading = true;
-        const response = await httpClient.get("exchanges?page=" + page, {
-          headers,
-        });
+        const response = await httpClient.get("exchanges");
         this.exchanges = response.data;
+        this.loading = false;
       } catch (error) {
         this.loading = false;
         console.log(error);

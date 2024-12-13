@@ -21,9 +21,8 @@ export const useTrending = defineStore("trending", {
     async getTrendingCoinsAction() {
       try {
         this.loading = true;
-        const response = await httpClient.get("trending?page=" + page, {
-          headers,
-        });
+        const response = await httpClient.get("search/trending");
+        this.loading = false;
         this.trending = response.data;
       } catch (error) {
         this.loading = false;
@@ -34,6 +33,7 @@ export const useTrending = defineStore("trending", {
 
     resetTrendingData() {
       this.trending = [];
+      this.loading = false;
     },
   },
 });
