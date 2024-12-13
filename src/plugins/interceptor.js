@@ -3,7 +3,7 @@ import router from '../routes/index';
 import { useToast } from 'vue-toastification';
 
 const toast = useToast();
-let baseURL = 'https://api.jikan.moe/v4/';
+let baseURL = 'https://api.coingecko.com/api/v3/';
 
 const httpClient = axios.create({ baseURL });
 

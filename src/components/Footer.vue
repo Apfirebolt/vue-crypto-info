@@ -1,8 +1,8 @@
 <template>
-    <footer class="bg-primary-800 text-white py-4">
-        <div class="container mx-auto text-center">
-            <p class="text-sm">© 2025 Crypto Info API. All rights reserved.</p>
-        </div>
+    <footer class="bg-primary py-4">
+        <p>
+            &copy; 2025 Crypto Info
+        </p>
     </footer>
 </template>
 

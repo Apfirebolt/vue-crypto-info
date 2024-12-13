@@ -2,19 +2,19 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 import httpClient from "../plugins/interceptor";
 
-export const useAnime = defineStore("anime", {
+export const usecoin = defineStore("coin", {
   state: () => ({
-    anime: ref({}),
-    animeList: ref([]),
+    coin: ref({}),
+    coinList: ref([]),
     loading: ref(false),
   }),
 
   getters: {
-    getAnime() {
-      return this.anime;
+    getcoin() {
+      return this.coin;
     },
-    getAnimeList() {
-      return this.animeList;
+    getcoinList() {
+      return this.coinList;
     },
     isLoading() {
       return this.loading;
@@ -22,17 +22,17 @@ export const useAnime = defineStore("anime", {
   },
 
   actions: {
-    async searchAnimeAction(name, page = 1) {
+    async searchCoinAction(name, page = 1) {
       try {
         this.loading = true;
-        const response = await httpClient.get(`anime`, {
+        const response = await httpClient.get(`coin`, {
           params: {
             q: name,
             page: page,
           },
         });
         if (response) {
-          this.animeList = response.data;
+          this.coinList = response.data;
           this.loading = false;
         }
       } catch (error) {
@@ -41,24 +41,23 @@ export const useAnime = defineStore("anime", {
       }
     },
 
-    async getAnimeDetailAction(id) {
+    async getCoinsAction(id) {
       try {
-        const headers = {
-          Authorization: `Bearer ${auth.authData.access}`,
-        };
+        this.loading = true;
         const response = await httpClient.get("groups?page=" + page, {
           headers,
         });
-        this.anime = response.data;
+        this.coinList = response.data;
       } catch (error) {
+        this.loading = false;
         console.log(error);
         return error;
       }
     },
 
-    resetAnimeData() {
-      this.anime = {};
-      this.animeList = [];
+    resetcoinData() {
+      this.coin = {};
+      this.coinList = [];
     },
   },
 });
