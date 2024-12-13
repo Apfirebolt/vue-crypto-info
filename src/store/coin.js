@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 import httpClient from "../plugins/interceptor";
 
-export const usecoin = defineStore("coin", {
+export const useCoin = defineStore("coin", {
   state: () => ({
     coin: ref({}),
     coinList: ref([]),
@@ -10,10 +10,10 @@ export const usecoin = defineStore("coin", {
   }),
 
   getters: {
-    getcoin() {
+    getCoin() {
       return this.coin;
     },
-    getcoinList() {
+    getCoinList() {
       return this.coinList;
     },
     isLoading() {
@@ -22,15 +22,10 @@ export const usecoin = defineStore("coin", {
   },
 
   actions: {
-    async searchCoinAction(name, page = 1) {
+    async getCoinsAction(page = 1) {
       try {
         this.loading = true;
-        const response = await httpClient.get(`coin`, {
-          params: {
-            q: name,
-            page: page,
-          },
-        });
+        const response = await httpClient.get(`coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=${page}&sparkline=false`);
         if (response) {
           this.coinList = response.data;
           this.loading = false;
@@ -38,20 +33,6 @@ export const usecoin = defineStore("coin", {
       } catch (error) {
         console.log(error);
         this.loading = false;
-      }
-    },
-
-    async getCoinsAction(id) {
-      try {
-        this.loading = true;
-        const response = await httpClient.get("groups?page=" + page, {
-          headers,
-        });
-        this.coinList = response.data;
-      } catch (error) {
-        this.loading = false;
-        console.log(error);
-        return error;
       }
     },
 

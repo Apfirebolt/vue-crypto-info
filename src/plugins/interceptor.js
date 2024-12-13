@@ -1,8 +1,6 @@
 import axios from 'axios';
 import router from '../routes/index';
-import { useToast } from 'vue-toastification';
 
-const toast = useToast();
 let baseURL = 'https://api.coingecko.com/api/v3/';
 
 const httpClient = axios.create({ baseURL });
@@ -28,18 +26,17 @@ const responseInterceptor = httpClient.interceptors.response.use(
     },
     error => {
         if (error.response.status === 401 || error.response.status === 403) {
-            toast.error('You are not authorized to access this resource');
+            console.error('You are not authorized to access this resource');
         }
         else if (error.response.status === 404) {
-            toast.error('Resource not found');
             router.push('/not-found');
         }
         else if (error.response.status === 400) {
-            toast.error('Bad request');
+            console.error('Bad request');
         }
         // Do something with response error
         else {
-            toast.error(error.response.data.message)
+            console.error(error.response.data.message)
             return Promise.reject(error);
         }
     }

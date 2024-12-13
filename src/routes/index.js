@@ -10,7 +10,7 @@ const routes = [
     },
     {
         path: '/coins',
-        name: 'Coin',
+        name: 'Coins',
         component: () => import('../views/Coin.vue')
     },
     {
@@ -20,7 +20,7 @@ const routes = [
     },
     {
         path: '/exchange',
-        name: 'Exchange',
+        name: 'Exchanges',
         component: () => import('../views/Exchange.vue')
     },
     {
