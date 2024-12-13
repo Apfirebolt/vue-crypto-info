@@ -42,8 +42,6 @@
 
   const router = useRouter()
   const navigateToPage = (item) => {
-    console.log(item)
-    // router push named route
     router.push({ name: item.name })
   }
   </script>

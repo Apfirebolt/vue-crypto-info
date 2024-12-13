@@ -36,6 +36,20 @@ export const useCoin = defineStore("coin", {
       }
     },
 
+    async searchCoinsAction(searchText) {
+      try {
+        this.loading = true;
+        const response = await httpClient.get(`search?query=${searchText}`);
+        if (response) {
+          this.coinList = response.data;
+          this.loading = false;
+        }
+      } catch (error) {
+        console.log(error);
+        this.loading = false;
+      }
+    },
+
     resetcoinData() {
       this.coin = {};
       this.coinList = [];
