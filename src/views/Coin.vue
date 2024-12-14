@@ -5,7 +5,7 @@
       <p class="mt-2 max-w-4xl text-sm text-gray-500">
         List of popular cryptocurrencies and their price in USD
       </p>
-      <div class="w-1/2 mx-auto my-3 bg-neutral-100 rounded-md px-3 py-2">
+      <div class="w-1/2 mx-auto my-3 bg-neutral-100 rounded-md p-1">
         <div class="flex justify-between items-center mt-4">
           <button
             @click="previousPage"
@@ -39,19 +39,56 @@
             :alt="coin.name"
           />
           <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2">
-              {{ coin.name }} ({{ coin.symbol.toUpperCase() }})
+            <div class="mb-2">
+              <div class="flex justify-between items-center my-2 bg-neutral-100 p-2">
+                <p>
+                  Name 
+                </p>
+                <p>
+                  {{ coin.name }}
+                </p>
+              </div>
+              <div class="flex justify-between items-center my-2 bg-neutral-100 p-2">
+                <p>
+                  Symbol
+                </p>
+                <p>
+                  {{ coin.symbol.toUpperCase() }}
+                </p>
+              </div>
+              <div class="flex justify-between items-center my-2 bg-neutral-100 p-2">
+                <p>
+                  Market Cap Rank
+                </p>
+                <p>
+                  {{ coin.market_cap_rank }}
+                </p>
+              </div>
+              <div class="flex justify-between items-center my-2 bg-neutral-100 p-2">
+                <p>
+                  Current Price
+                </p>
+                <p>
+                  ${{ coin.current_price }}
+                </p>
+              </div>
+              <div class="flex justify-between items-center my-2 bg-neutral-100 p-2">
+                <p>
+                  24 Hour High
+                </p>
+                <p>
+                  ${{ coin.high_24h }}
+                </p>
+              </div>
+              <div class="flex justify-between items-center bg-neutral-100 p-2">
+                <p>
+                  24 Hour Low
+                </p>
+                <p>
+                  ${{ coin.low_24h }}
+                </p>
+              </div>
             </div>
-            <p class="text-gray-700 text-base">
-              Current Price: ${{ coin.current_price }}
-            </p>
-            <p class="text-gray-700 text-base">
-              Market Cap: ${{ coin.market_cap }}
-            </p>
-            <p class="text-gray-700 text-base">
-              24h High: ${{ coin.high_24h }}
-            </p>
-            <p class="text-gray-700 text-base">24h Low: ${{ coin.low_24h }}</p>
           </div>
         </div>
       </div>
@@ -60,7 +97,7 @@
 </template>
 
 <script setup>
-import { computed, ref, onMounted } from "vue";
+import { computed, ref, onMounted, h } from "vue";
 import { useCoin } from "../store/coin";
 import Loader from "../components/Loader.vue";
 
