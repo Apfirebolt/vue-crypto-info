@@ -2,8 +2,10 @@ import axios from 'axios';
 import router from '../routes/index';
 
 let baseURL = 'https://api.coingecko.com/api/v3/';
+let pokemonUrl = 'https://pokeapi.co/api/v2/';
 
 const httpClient = axios.create({ baseURL });
+const pokemonClient = axios.create({ baseURL: pokemonUrl });
 
 // Create a request interceptor
 
@@ -42,4 +44,5 @@ const responseInterceptor = httpClient.interceptors.response.use(
     }
 );
 
-export default httpClient;
+export { httpClient, pokemonClient };
+

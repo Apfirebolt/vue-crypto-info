@@ -24,6 +24,11 @@ const routes = [
         component: () => import('../views/Exchange.vue')
     },
     {
+        path: '/pokemon',
+        name: 'Pokemon',
+        component: () => import('../views/Pokemon.vue')
+    },
+    {
         path: '/:catchAll(.*)',
         name: 'NotFound',
         component: NotFound
