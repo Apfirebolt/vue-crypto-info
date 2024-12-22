@@ -19,7 +19,7 @@
           <div
             v-for="item in trendingList.coins"
             :key="item.id"
-            class="max-w-sm rounded overflow-hidden text-center shadow-lg my-4"
+            class="max-w-lg rounded overflow-hidden text-center shadow-lg my-4"
           >
             <img
               class="w-64 h-64 mx-auto my-3"
@@ -113,7 +113,7 @@
           <div
             v-for="item in trendingList.categories"
             :key="item.id"
-            class="max-w-sm rounded overflow-hidden text-center shadow-lg my-4"
+            class="max-w-lg rounded overflow-hidden text-center shadow-lg my-4"
           >
             <div class="px-6 py-4">
               <div>

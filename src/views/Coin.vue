@@ -31,7 +31,7 @@
         <div
           v-for="coin in coins"
           :key="coin.id"
-          class="max-w-sm rounded overflow-hidden text-center shadow-lg my-4"
+          class="max-w-lg rounded overflow-hidden text-center shadow-lg my-4"
         >
           <img
             class="w-64 h-64 mx-auto my-3"

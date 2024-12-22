@@ -40,6 +40,24 @@ npm run dev
 
 Would be added later as there might be UI changes under plan.
 
+## Screenshots
+
+Here are some screenshots of the Crypto Info App:
+
+![Trending Page](./screenshots/1.png)
+*Trending Page*
+
+![Exchanges Page](./screenshots/2.png)
+*Exchanges Page*
+
+![Coins Page](./screenshots/3.png)
+*Coins Page*
+
+![Home Page](./screenshots/4.png)
+*Home Page*
+
+Home page also shows the price of the selected ticker in USD and INR through a modal powered by Headless UI components.
+
 ## Checking Updates
 
 Check if there are updates available for NPM packages used in this project.
