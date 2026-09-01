@@ -1,3 +1,62 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Theme Tokens (Light Mode Defaults) */
+    --color-primary: #0f172a;
+    --color-secondary-100: #f8fafc;
+    --color-secondary-200: #e2e8f0;
+    --color-secondary-300: #6366f1; /* Electric Indigo Accent */
+    --color-danger: #ef4444;
+
+    /* Surface & Neutral Tokens */
+    --background: #f8fafc;
+    --foreground: #0f172a;
+    --card: #ffffff;
+    --card-foreground: #0f172a;
+    --border: #e2e8f0;
+    --muted: #64748b;
+  }
+
+  .dark {
+    /* Theme Tokens (Deep Glassmorphic Dark Mode) */
+    --color-primary: #6366f1; /* Glowing Indigo */
+    --color-secondary-100: #f1f5f9;
+    --color-secondary-200: #94a3b8;
+    --color-secondary-300: #818cf8; /* Soft Indigo */
+    --color-danger: #f87171;
+
+    /* Dark Surfaces */
+    --background: #090d16; /* Midnight Obsidian */
+    --foreground: #f8fafc;
+    --card: #0f172a; /* Deep Slate Glass */
+    --card-foreground: #f8fafc;
+    --border: #1e293b;
+    --muted: #94a3b8;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Register theme tokens for Tailwind v4 utility generation */
+@theme {
+  --color-primary: var(--color-primary);
+  --color-secondary-100: var(--color-secondary-100);
+  --color-secondary-200: var(--color-secondary-200);
+  --color-secondary-300: var(--color-secondary-300);
+  --color-danger: var(--color-danger);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+
+  --font-heading: "Inter", "Plus Jakarta Sans", sans-serif;
+}
